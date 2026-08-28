@@ -1,12 +1,16 @@
-import { Image,StyleSheet,View } from "react-native"
+import { Image,StyleSheet,View,Text } from "react-native"
 
 
 type StatusCardProps={
     PhotoUri: string
-    IsActivate:boolean
+    IsActivate:boolean,
+    label:string
 }
 export const StatusCard= (props:StatusCardProps)=> {
     return(
+        <View
+        style={{alignItems:"center"}}
+        >
         <View
         style={[styles.view,{borderWidth:props.IsActivate?2:0}]}
         >
@@ -16,6 +20,9 @@ export const StatusCard= (props:StatusCardProps)=> {
         source={{uri:props.PhotoUri}}
         />
         </View>
+        <Text>{props.label}</Text>
+        </View>
+        
         
     )
 }

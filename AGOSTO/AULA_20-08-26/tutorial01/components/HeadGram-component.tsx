@@ -1,10 +1,11 @@
 import { Text,StyleSheet,ScrollView } from "react-native"
 import { StatusCard } from "./statusCardComponents"
 import { useTransition } from "react"
+import { IUserData } from "../core/user"
 
 type HeaderGramProps={
     label:string
-    urisStatus:Array<string>
+    userData:IUserData[]
 }
 export const HeaderGram=(props:HeaderGramProps)=>{
     
@@ -13,12 +14,12 @@ export const HeaderGram=(props:HeaderGramProps)=>{
         horizontal
         showsHorizontalScrollIndicator={true}
         >
-            {props.urisStatus.map(i=>{
+            {props.userData.map(i=>{
                 return <StatusCard
-                PhotoUri={i}
+                PhotoUri={i.urlImage}
                 IsActivate={true}
                 key={`${Number(Math.random().toFixed(2))*100}`}
-                
+                label={i.name}
                 />
             })}
         </ScrollView>

@@ -2,26 +2,21 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text,ScrollView  } from 'react-native';
 import { HeaderGram } from './components/HeadGram-component';
 import { useState } from 'react';
+import { IUserData } from './core/user';
 
 export default function App() {
-  const [uris,setUris]=useState(
-    ["https://placehold.co/100x100.jpg",
-      "https://placehold.co/100x100.jpg",
-      "https://placehold.co/100x100.jpg",
-      "https://placehold.co/100x100.jpg",
-      "https://placehold.co/100x100.jpg",
-      "https://placehold.co/100x100.jpg",
-      "https://placehold.co/100x100.jpg",
-      "https://placehold.co/100x100.jpg",
-      "https://placehold.co/100x100.jpg",
-      "https://placehold.co/100x100.jpg",
-      "https://placehold.co/100x100.jpg",
-      "https://placehold.co/100x100.jpg",
-      "https://placehold.co/100x100.jpg",
-      "https://placehold.co/100x100.jpg",
-      "https://placehold.co/100x100.jpg"
-    ]
-  )
+  const [uris,setUris]=useState([
+    {
+      name:"Roger",
+      urlImage:"https://placehold.co/100x100.jpg"
+    } as IUserData
+  ])
+  for(let i =0;i<10;i++){
+    uris.push({
+      name:"Roger",
+      urlImage:"https://placehold.co/100x100.jpg"
+    } as IUserData)
+  }
   return (
     <ScrollView style={styles.container}>
       
@@ -29,7 +24,7 @@ export default function App() {
 
       <HeaderGram
       label='ifpigram'
-      urisStatus={uris}
+      userData={uris}
       />
       <StatusBar/>
     </ScrollView>
@@ -44,7 +39,7 @@ const styles = StyleSheet.create({
   },
   text:{
     left:20,
-    top:20,
+    top:10,
     fontFamily:"monospace",
     fontSize:20,
     },
