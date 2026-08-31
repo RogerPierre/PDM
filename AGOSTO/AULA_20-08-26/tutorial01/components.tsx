@@ -1,94 +1,71 @@
-import { StatusBar } from 'expo-status-bar';
-import { useState } from 'react';
-import { StyleSheet, Text, ScrollView, Image, View } from 'react-native';
-import { AppBar,Post } from './components'; 
-export default function App() {
-  let txtCount = "Testa".split("")
-  const [statusActive,setStatusActive]=useState(true)
-  //sub component for status
-  const handleADDStatus = (active?: boolean, key?: string) => {
-    return (
-      <View key={key}>
-        <View style={[styles.statusView, { borderWidth: active ? 3 : 0 }]} >
-          <Image
-            source={{ uri: "https:///placehold.co/100x100.jpg" }}
-            style={styles.status}
-          />
-        </View>
-        <Text style={[{ alignSelf: "center", fontWeight: 900, }]}  >nome</Text>
-      </View>
-    )
-  }
+import { View,Image,Text,StyleSheet } from "react-native";
+
+
+
+
+export function Post() {
   return (
-    <View style={styles.screen}>
-      <ScrollView style={styles.container}>
-
-      //header
-      <Text style={styles.text}>IFPIGRAM</Text>
-      <View style={styles.icons}>
-        <Image style={styles.icon} source={{ uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHTC-54TqXdH4N9jw4JwmTFkueqo9cSj0QTg5US1Nh-A&s=10" }} />
-        <Image style={[styles.icon, {}]} source={{ uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRR6U88zwsnBeW66QgMWLRHSg36YeNjqKfxblXJjz-dTw&s=10" }} />
-
+    <View style={styles.post}>
+      <View style={styles.postHeader}>
+        <View style={styles.postIdentity}>
+          <View style={styles.postAvatarFrame}>
+            <Image
+              source={{ uri: "https:///placehold.co/50x50.jpg" }}
+              style={styles.postAvatar}
+            />
+          </View>
+          <Text style={styles.postUser}>WaitoCocrt</Text>
+          <Text style={styles.verified}>●</Text>
+        </View>
+        <Text style={styles.more}>⋮</Text>
       </View>
-      //status scrollable
-      <ScrollView horizontal showsHorizontalScrollIndicator={true}>
-        {txtCount.map((_, index) => handleADDStatus(statusActive, `status-${index}`))}
-      </ScrollView>
-      //posts list
-      <ScrollView>
-        <Post />
-
-      </ScrollView>
-      <StatusBar hidden={true} />
-
-      </ScrollView>
-      <AppBar />
+      <Image
+        source={{ uri: "https:///placehold.co/400x400.jpg" }}
+        style={styles.postImage}
+      />
+      <View style={styles.postActions}>
+        <View style={styles.leftActions}>
+          <Text style={styles.actionIcon}>♡</Text>
+          <Text style={styles.actionIcon}>◌</Text>
+          <Text style={styles.actionIcon}>➤</Text>
+        </View>
+        <Text style={styles.actionIcon}>▱</Text>
+      </View>
+      <View style={styles.postDetails}>
+        <Text style={styles.likes}>100.20 Theo</Text>
+        <Text style={styles.caption}>
+          <Text style={styles.postUser}>WhiteCross </Text>
+          Drine in to dreniges.
+          <Text style={styles.moreText}>  ... more</Text>
+        </Text>
+        <Text style={styles.comments}>View all 20 comments</Text>
+        <View style={styles.commentRow}>
+          <Image
+            source={{ uri: "https:///placehold.co/50x50.jpg" }}
+            style={styles.commentAvatar}
+          />
+          <Text style={styles.commentPlaceholder}>Add a comment...</Text>
+        </View>
+        <Text style={styles.postAge}>no memo ago</Text>
+      </View>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-  container: {
-    marginTop: 0,
-    flex: 1,
-    backgroundColor: '#fff',
-    display: "flex",
-    flexDirection: "column",
-  },
-  text: {
-    left: 20,
-    top: 20,
-    fontFamily: "monospace",
-    fontSize: 20,
-  },
-  icon: {
-    marginLeft: 12,
-    height: 30,
-    width: 30
-  },
-  icons: {
-    alignSelf: "flex-end",
-    flexDirection: "row"
-  },
-  statusView: {
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 100,
-    borderWidth: 1,
-    width: 75,
-    height: 75,
-    marginLeft: 12,
-  },
-  status: {
-    borderRadius: 100,
-    borderWidth:1,
-    width: 60,
-    height: 60,
-  },
+export const AppBar=()=> {
+  return (
+    <View style={styles.appBar}>
+      <Text style={[styles.appBarIcon, styles.selectedIcon]}>⌂</Text>
+      <Text style={styles.appBarIcon}>⌕</Text>
+      <Text style={styles.addIcon}>＋</Text>
+      <Text style={styles.appBarIcon}>◎</Text>
+      <View style={styles.appBarAvatar} />
+    </View>
+  );
+}
+const styles=StyleSheet.create({
+
+    
   post: {
     marginTop: 22,
     borderTopWidth: 1,
@@ -230,5 +207,4 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: '#111',
   }
-
-});
+})
