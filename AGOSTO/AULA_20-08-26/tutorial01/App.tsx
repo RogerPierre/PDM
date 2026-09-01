@@ -23,18 +23,15 @@ export default function App() {
     <View style={styles.screen}>
       <ScrollView style={styles.container}>
 
-      //header
       <Text style={styles.text}>IFPIGRAM</Text>
       <View style={styles.icons}>
         <Image style={styles.icon} source={{ uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHTC-54TqXdH4N9jw4JwmTFkueqo9cSj0QTg5US1Nh-A&s=10" }} />
         <Image style={[styles.icon, {}]} source={{ uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRR6U88zwsnBeW66QgMWLRHSg36YeNjqKfxblXJjz-dTw&s=10" }} />
 
       </View>
-      //status scrollable
-      <ScrollView horizontal showsHorizontalScrollIndicator={true}>
+      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {txtCount.map((_, index) => handleADDStatus(statusActive, `status-${index}`))}
       </ScrollView>
-      //posts list
       <ScrollView>
         <Post />
 
